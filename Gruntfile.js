@@ -316,6 +316,16 @@ module.exports = function (grunt) {
                 cwd: '<%= yeoman.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
+            },
+            // copy non minified scripts so we can insert them into the page and so users can inspect them
+            scripts: {
+                expand: true,
+                dot: true,
+                cwd: '<%= yeoman.app %>',
+                dest: '<%= yeoman.dist %>/nomin',
+                src: [
+                    'scripts/*.*'
+                ]
             }
         },
 
@@ -325,6 +335,7 @@ module.exports = function (grunt) {
         concurrent: {
             server: [
                 'compass:server',
+                'copy:scripts',
                 'copy:styles'
             ],
             test: [
@@ -333,6 +344,7 @@ module.exports = function (grunt) {
             dist: [
                 'compass',
                 'copy:styles',
+                'copy:scripts',
                 'imagemin',
                 'svgmin'
             ]
