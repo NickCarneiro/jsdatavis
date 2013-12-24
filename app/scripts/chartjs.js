@@ -2,5 +2,4 @@
 
 $(function() {
     // grab scripts and insert into divs to display it
-    var url
 });
