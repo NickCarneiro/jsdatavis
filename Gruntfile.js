@@ -92,18 +92,29 @@ module.exports = function(grunt) {
                     loadPath: 'app/bower_components/'
                 },
                 files: {                         // Dictionary of files
-                    'main.css': 'app/styles/main.scss',       // 'destination': 'source'
+                    'dist/styles/main.css': 'app/styles/main.scss',       // 'destination': 'source'
                     'app/styles/main.css': 'app/styles/main.scss'       // 'destination': 'source'
                 }
             }
-        }
+        },
+        copy: {
+            main: {
+                files: [
+                    // includes files within path
+                    {expand: true, src: ['*'], dest: 'dist/', cwd: 'app/'}
+                ]
+            }
+        },
+        clean: ['dist/']
     });
 
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('default', ['sass']);
+    grunt.registerTask('default', ['clean', 'sass', 'copy']);
     grunt.registerTask('serve', function (target) {
 
         grunt.task.run([
