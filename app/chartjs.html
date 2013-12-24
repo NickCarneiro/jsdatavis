@@ -15,6 +15,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/prism/themes/prism.css">
     <!-- endbuild -->
 </head>
 <body>
@@ -35,8 +36,9 @@
         <div id="line-chart-container">
             <canvas id="line-chart-canvas" width="800" height="500"></canvas>
         </div>
-        <div id="line-source-container">
-
+        <div>
+            <pre data-src="scripts/chartjs-line.js">
+            </pre>
         </div>
     </div>
     <div class="row marketing">
@@ -44,8 +46,9 @@
         <div id="bar-chart-container">
             <canvas id="bar-chart-canvas" width="800" height="500"></canvas>
         </div>
-        <div id="bar-source-container">
-
+        <div>
+            <pre data-src="scripts/chartjs-line.js">
+            </pre>
         </div>
     </div>
 
@@ -75,8 +78,10 @@
 <!-- build:js scripts/chartjs.js -->
 <script src="scripts/chartjs-line.js"></script>
 <script src="scripts/chartjs-bar.js"></script>
-<script src="scripts/chartjs.js"></script>
 <!-- endbuild -->
+<script>
+    window.renderSource('chartjs', ['line', 'bar'])
+</script>
 
 <!-- build:js scripts/plugins.js -->
 <script src="bower_components/sass-bootstrap/js/affix.js"></script>
@@ -91,6 +96,7 @@
 <script src="bower_components/sass-bootstrap/js/scrollspy.js"></script>
 <script src="bower_components/sass-bootstrap/js/collapse.js"></script>
 <script src="bower_components/sass-bootstrap/js/tab.js"></script>
+<script src="bower_components/prism/prism.js"></script>
 <!-- endbuild -->
 </body>
 </html>
