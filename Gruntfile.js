@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt) {
 
     grunt.initConfig({
@@ -16,20 +18,12 @@ module.exports = function(grunt) {
                     livereload: true
                 }
             },
-            jstest: {
-                files: ['test/spec/{,*/}*.js'],
-                tasks: ['test:watch']
-            },
             gruntfile: {
                 files: ['Gruntfile.js']
             },
             compass: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass:server', 'autoprefixer']
-            },
-            styles: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-                tasks: ['newer:copy:styles', 'autoprefixer']
+                tasks: ['sass']
             },
             livereload: {
                 options: {
@@ -37,7 +31,6 @@ module.exports = function(grunt) {
                 },
                 files: [
                     '<%= yeoman.app %>/{,*/}*.html',
-                    '.tmp/styles/{,*/}*.css',
                     '<%= yeoman.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
                 ]
             }
@@ -55,8 +48,13 @@ module.exports = function(grunt) {
                     open: true,
                     base: [
                         '.tmp',
-                        '<%= yeoman.app %>'
-                    ]
+                        '<%= yeoman.app %>/'
+                    ],
+                    files: [
+                        '<%= yeoman.app %>/{,*/}*.html',
+                        '<%= yeoman.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
+                    ],
+                    interrupt: true
                 }
             },
             test: {
@@ -79,7 +77,7 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     port: 9001,
-                    base: 'app/',
+                    base: '<%= yeoman.app %>/',
                     keepalive: true
                 }
             }
@@ -89,11 +87,12 @@ module.exports = function(grunt) {
             dist: {                            // Target
                 options: {                       // Target options
                     style: 'expanded',
-                    loadPath: 'app/bower_components/'
+                    loadPath: '<%= yeoman.app %>/bower_components/',
+                    noCache: true
                 },
                 files: {                         // Dictionary of files
-                    'dist/styles/main.css': 'app/styles/main.scss',       // 'destination': 'source'
-                    'app/styles/main.css': 'app/styles/main.scss'       // 'destination': 'source'
+                    'dist/styles/main.css': '<%= yeoman.app %>/styles/main.scss',       // 'destination': 'source'
+                    '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/main.scss'       // 'destination': 'source'
                 }
             }
         },
@@ -101,11 +100,31 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     // includes files within path
-                    {expand: true, src: ['*'], dest: 'dist/', cwd: 'app/'}
+                    {expand: true, src: ['*'], dest: 'dist/', cwd: '<%= yeoman.app %>/'}
                 ]
             }
         },
-        clean: ['dist/']
+        clean: ['dist/'],
+        concurrent: {
+            watch: {
+                tasks: ['watch'],
+                options: {
+                    logConcurrentOutput: true
+                }
+            }
+        },
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc',
+                reporter: require('jshint-stylish')
+            },
+            all: [
+                'Gruntfile.js',
+                '<%= yeoman.app %>/scripts/{,*/}*.js',
+                '!<%= yeoman.app %>/scripts/vendor/*',
+                'test/spec/{,*/}*.js'
+            ]
+        }
     });
 
 
@@ -113,12 +132,17 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-concurrent');
 
     grunt.registerTask('default', ['clean', 'sass', 'copy']);
-    grunt.registerTask('serve', function (target) {
+    grunt.registerTask('serve', function () {
 
         grunt.task.run([
             'sass',
+            'connect:livereload',
+            'concurrent:watch',
             'connect:server'
         ]);
     });
