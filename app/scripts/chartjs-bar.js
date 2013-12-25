@@ -35,7 +35,3 @@ $(function() {
     };
     $.ajax(url, options);
 });
-
-
-
-

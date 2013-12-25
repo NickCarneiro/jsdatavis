@@ -36,5 +36,3 @@ $(function() {
     };
     $.ajax(url, options);
 });
-
-
