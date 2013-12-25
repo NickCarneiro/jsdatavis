@@ -100,7 +100,7 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     // includes files within path
-                    {expand: true, src: ['*'], dest: 'dist/', cwd: '<%= yeoman.app %>/'}
+                    {expand: true, src: ['**'], dest: 'dist/', cwd: '<%= yeoman.app %>/'}
                 ]
             }
         },
