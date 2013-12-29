@@ -1,0 +1,46 @@
+include "header.html"
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>dygraphs</h1>
+            <a href="http://dygraphs.com/">Website</a>
+            -
+            <a href="https://github.com/danvk/dygraphs/">GitHub</a>
+            <h3>dygraphs is a fast, flexible open source JavaScript charting library.</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Line Chart</h2>
+            <div id="line-chart-container">
+            </div>
+            <div>
+                <h3>JavaScript</h3>
+                <pre data-src="scripts/dygraphs-line.js">
+                </pre>
+            </div>
+            <div>
+                <h3>Data</h3>
+                <a href="data/aapl.json">aapl.json</a>
+                <pre class="data-container" data-src="data/aapl.json">
+                </pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Bar Chart</h2>
+
+
+            <div>
+                Bar charts aren't supported out of the box, but you can create one with a
+                <a href="http://dygraphs.com/tests/plotters.html">custom plotter</a>.
+            </div>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/dygraph/1.2/dygraph-combined.js"></script>
+    <script src="scripts/dygraphs-line.js"></script>
+    <script src="scripts/dygraphs-bar.js"></script>
+    include "footer.html"
