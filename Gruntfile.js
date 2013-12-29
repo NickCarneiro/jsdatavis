@@ -77,7 +77,7 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     port: 9001,
-                    base: '<%= yeoman.app %>/',
+                    base: '<%= yeoman.app %>/dist',
                     keepalive: true
                 }
             }
@@ -124,6 +124,16 @@ module.exports = function(grunt) {
                 '!<%= yeoman.app %>/scripts/vendor/*',
                 'test/spec/{,*/}*.js'
             ]
+        },
+        includes: {
+            files: {
+                src: ['<%= yeoman.app %>/index.html',
+                    '<%= yeoman.app %>/chartjs.html',
+                    '<%= yeoman.app %>/header.html'], // Source files
+                dest: '<%= yeoman.app %>/dist', // Destination directory
+                flatten: true,
+                cwd: '<%= yeoman.app %>'
+            }
         }
     });
 
@@ -135,12 +145,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-includes');
 
-    grunt.registerTask('default', ['clean', 'sass', 'copy']);
+    grunt.registerTask('default', ['clean', 'sass', 'includes', 'copy']);
     grunt.registerTask('serve', function () {
 
         grunt.task.run([
             'sass',
+            'includes',
             'connect:livereload',
             'concurrent:watch',
             'connect:server'
