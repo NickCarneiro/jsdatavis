@@ -1,7 +1,7 @@
 /* global Raphael */
 'use strict';
 
-window.onload = function () {
+$(function() {
     var r = new Raphael('line-chart-container'),
         txtattr = { font: '12px sans-serif' };
 
@@ -19,7 +19,7 @@ window.onload = function () {
         }
     }
 
-    function drawGraph(priceData) {
+    function drawLineGraph(priceData) {
         // the input data format is an array of 1-dimensional arrays.
         var independentSeries = [];
         var dependentSeries = [];
@@ -37,7 +37,7 @@ window.onload = function () {
         // if you want to add more lines, append to these arrays
         var horizontalData = [independentSeries];
         var verticalData = [dependentSeries];
-        var lines = r.linechart(20, 10, 600, 220,
+        var lines = r.linechart(20, 10, 600, 320,
             horizontalData,
             verticalData,
             { nostroke: false,
@@ -51,6 +51,6 @@ window.onload = function () {
     }
 
     $.get('data/aapl.json', function(priceData) {
-        drawGraph(priceData);
+        drawLineGraph(priceData);
     });
-};
+});
