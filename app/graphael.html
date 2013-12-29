@@ -3,22 +3,21 @@ include "header.html"
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h1>Chart.js</h1>
-            <a href="http://www.chartjs.org/">Website</a>
+            <h1>gRaphaël</h1>
+            <a href="http://g.raphaeljs.com/">Website</a>
             -
-            <a href="https://github.com/nnnick/Chart.js">GitHub</a>
-            <h3>Easy, object oriented client side graphs for designers and developers</h3>
+            <a href="https://github.com/DmitryBaranovskiy/g.raphael">GitHub</a>
+            <h3>gRaphaël’s goal is to help you create stunning charts on your website. </h3>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
             <h2>Line Chart</h2>
             <div id="line-chart-container">
-                <canvas id="line-chart-canvas" width="600" height="300"></canvas>
             </div>
             <div>
                 <h3>JavaScript</h3>
-                <pre data-src="scripts/chartjs-line.js">
+                <pre data-src="scripts/graphael-line.js">
                 </pre>
             </div>
             <div>
@@ -37,7 +36,7 @@ include "header.html"
             </div>
             <div>
                 <h3>JavaScript</h3>
-                <pre data-src="scripts/chartjs-bar.js">
+                <pre data-src="scripts/graphael-bar.js">
                 </pre>
             </div>
             <div>
@@ -48,7 +47,9 @@ include "header.html"
         </div>
     </div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
-    <script src="scripts/chartjs-line.js"></script>
-    <script src="scripts/chartjs-bar.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/graphael/0.5.1/g.raphael-min.js"></script>
+    <script src="vendor-scripts/graphael-line.min.js"></script>
+    <script src="scripts/graphael-line.js"></script>
+    <script src="scripts/graphael-bar.js"></script>
     include "footer.html"
