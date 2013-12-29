@@ -4,7 +4,7 @@
 function drawLineGraph(dataArray) {
     // the draw function takes a "data" object of a particular format.
     // we need an array of X values and separate arrays for every other dependent series
-    // in this example we have a CSV with two columns, date and price.
+    // in this example we have a 2-dimensional array. Each row contains date and price.
     var horizontalAxisLabels = [];
     var dependentValues = [];
     for (var i = 0; i < 10; i++) {
