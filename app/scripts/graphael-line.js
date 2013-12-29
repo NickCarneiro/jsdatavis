@@ -2,6 +2,7 @@
 'use strict';
 
 $(function() {
+    /*jshint validthis: true */
     var r = new Raphael('line-chart-container'),
         txtattr = { font: '12px sans-serif' };
 
@@ -9,7 +10,16 @@ $(function() {
         this.tags = r.set();
 
         for (var i = 0, ii = this.y.length; i < ii; i++) {
-            this.tags.push(r.tag(this.x, this.y[i], this.values[i], 160, 10).insertBefore(this).attr([{ fill: '#fff' }, { fill: this.symbols[i].attr('fill') }]));
+            this.tags.push(r.tag(this.x, this.y[i], this.values[i], 160, 10)
+                .insertBefore(this).attr([
+                    {
+                        fill: '#fff'
+                    },
+                    {
+                        fill: this.symbols[i].attr('fill')
+                    }
+                ]
+                ));
         }
     }
 
@@ -26,7 +36,7 @@ $(function() {
 
         for (var i = 0; i < priceData.length; i++) {
             var xValue = priceData[i][0];
-            var date = new Date(xValue)
+            var date = new Date(xValue);
             independentSeries.push(date);
 
             var yValue = priceData[i][1];

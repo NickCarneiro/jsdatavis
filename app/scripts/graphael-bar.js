@@ -1,8 +1,5 @@
 /* global Raphael */
-
-$(function() {
-    $.get('/data/salaries.json', drawBarGraph);
-});
+'use strict';
 
 function drawBarGraph(data) {
     var independentSeries = [];
@@ -15,12 +12,12 @@ function drawBarGraph(data) {
         var yValue = data[i][1];
         dependentSeries.push(yValue);
     }
-    var r = Raphael('bar-chart-container');
-    var txtattr = { font: "12px sans-serif" };
+    var r = new Raphael('bar-chart-container');
+    var txtattr = { font: '12px sans-serif' };
 
-    r.text(160, 10, "Single Series Chart").attr(txtattr);
+    r.text(160, 10, 'Single Series Chart').attr(txtattr);
 
-    var barChart = r.barchart(10, 10, 600, 320, [dependentSeries], 0,
+    r.barchart(10, 10, 600, 320, [dependentSeries], 0,
         {
             type: 'sharp',
             axis: '0 0 1 1'
@@ -29,5 +26,8 @@ function drawBarGraph(data) {
     // https://github.com/DmitryBaranovskiy/g.raphael/issues/129
     // They are supposed to work like this:
     //barChart.label(independentSeries);
-
 }
+
+$(function() {
+    $.get('/data/salaries.json', drawBarGraph);
+});
