@@ -32,7 +32,8 @@ module.exports = function(grunt) {
                 files: [
                     '<%= yeoman.app %>/{,*/}*.html',
                     '<%= yeoman.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
-                ]
+                ],
+                tasks: ['copy', 'includes']
             }
         },
         // The actual grunt server settings
