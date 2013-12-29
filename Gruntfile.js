@@ -33,7 +33,7 @@ module.exports = function(grunt) {
                     '<%= yeoman.app %>/{,*/}*.html',
                     '<%= yeoman.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
                 ],
-                tasks: ['copy', 'includes']
+                tasks: ['clean', 'copy', 'includes']
             }
         },
         // The actual grunt server settings
@@ -151,6 +151,7 @@ module.exports = function(grunt) {
     grunt.registerTask('serve', function () {
 
         grunt.task.run([
+            'clean',
             'sass',
             'copy',
             'includes',
