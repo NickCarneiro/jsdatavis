@@ -48,7 +48,7 @@ module.exports = function(grunt) {
                     open: true,
                     base: [
                         '.tmp',
-                        '<%= yeoman.app %>/'
+                        'dist/'
                     ],
                     files: [
                         '<%= yeoman.app %>/{,*/}*.html',
@@ -127,13 +127,12 @@ module.exports = function(grunt) {
         },
         includes: {
             files: {
-                src: ['<%= yeoman.app %>/index.html',
-                    '<%= yeoman.app %>/chartjs.html',
-                    '<%= yeoman.app %>/header.html'], // Source files
-                dest: '<%= yeoman.app %>/dist', // Destination directory
+                src: ['*.html'],
+                dest: 'dist/', // Destination directory
                 flatten: true,
-                cwd: '<%= yeoman.app %>'
-            }
+                cwd: 'app'
+            },
+            debug: 'true'
         }
     });
 
@@ -147,11 +146,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-includes');
 
-    grunt.registerTask('default', ['clean', 'sass', 'includes', 'copy']);
+    grunt.registerTask('default', ['clean', 'sass', 'copy', 'includes']);
     grunt.registerTask('serve', function () {
 
         grunt.task.run([
             'sass',
+            'copy',
             'includes',
             'connect:livereload',
             'concurrent:watch',
