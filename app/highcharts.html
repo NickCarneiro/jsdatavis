@@ -1,0 +1,54 @@
+include "header.html"
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Highcharts</h1>
+            <a href="http://www.highcharts.com/">Website</a>
+            <h3>Interactive JavaScript charts for your web projects</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Line Chart</h2>
+            <div id="line-chart-container">
+            </div>
+            <div>
+                <h3>JavaScript</h3>
+                <pre data-src="scripts/highcharts-line.js">
+                </pre>
+            </div>
+            <div>
+                <h3>Data</h3>
+                <a href="data/aapl.json">aapl.json</a>
+                <pre class="data-container" data-src="data/aapl.json">
+                </pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Bar Chart</h2>
+            <div id="bar-chart-container">
+                <canvas id="bar-chart-canvas" width="600" height="300"></canvas>
+            </div>
+            <div>
+                <h3>JavaScript</h3>
+                <pre data-src="scripts/highcharts-bar.js">
+                </pre>
+            </div>
+            <div>
+                <h3>Data</h3>
+                <a href="data/salaries.json">salaries.json</a>
+                <pre class="data-container" data-src="data/salaries.json"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/data.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+    <script src="scripts/highcharts-line.js"></script>
+    <script src="scripts/highcharts-bar.js"></script>
+    include "footer.html"
