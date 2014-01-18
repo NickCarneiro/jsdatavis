@@ -1,0 +1,73 @@
+include "header.html"
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/rickshaw/1.4.6/rickshaw.css" />
+<style>
+    #line-chart-container {
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    #line-chart {
+        position: relative;
+        left: 40px;
+    }
+    #line-y-axis {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Rickshaw</h1>
+            <a href="http://www.rickshaw.org/">Website</a>
+            -
+            <a href="https://github.com/nnnick/Rickshaw">GitHub</a>
+            <h3>Easy, object oriented client side graphs for designers and developers</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Line Chart</h2>
+            <div id="line-chart-container">
+                <div id="line-y-axis"></div>
+                <div id="line-chart"></div>
+            </div>
+            <div>
+                <h3>JavaScript</h3>
+                <pre data-src="scripts/rickshaw-line.js">
+                </pre>
+            </div>
+            <div>
+                <h3>Data</h3>
+                <a href="data/aapl.json">aapl.json</a>
+                <pre class="data-container" data-src="data/aapl.json">
+                </pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Bar Chart</h2>
+            <div id="bar-chart-container">
+                <canvas id="bar-chart-canvas" width="600" height="300"></canvas>
+            </div>
+            <div>
+                <h3>JavaScript</h3>
+                <pre data-src="scripts/rickshaw-bar.js">
+                </pre>
+            </div>
+            <div>
+                <h3>Data</h3>
+                <a href="data/salaries.json">salaries.json</a>
+                <pre class="data-container" data-src="data/salaries.json"></pre>
+            </div>
+        </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.11/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/rickshaw/1.4.6/rickshaw.js"></script>
+    <script src="scripts/rickshaw-line.js"></script>
+    <script src="scripts/rickshaw-bar.js"></script>
+    include "footer.html"
