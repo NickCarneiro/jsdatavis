@@ -51,23 +51,12 @@ include "header.html"
     <div class="row">
         <div class="col-lg-12">
             <h2>Bar Chart</h2>
-            <div id="bar-chart-container">
-                <canvas id="bar-chart-canvas" width="600" height="300"></canvas>
-            </div>
-            <div>
-                <h3>JavaScript</h3>
-                <pre data-src="scripts/rickshaw-bar.js">
-                </pre>
-            </div>
-            <div>
-                <h3>Data</h3>
-                <a href="data/salaries.json">salaries.json</a>
-                <pre class="data-container" data-src="data/salaries.json"></pre>
-            </div>
+            <p>
+                Rickshaw supports bar charts but they don't work well for non-time series data.
+            </p>
         </div>
     </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.11/d3.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/rickshaw/1.4.6/rickshaw.js"></script>
     <script src="scripts/rickshaw-line.js"></script>
-    <script src="scripts/rickshaw-bar.js"></script>
     include "footer.html"

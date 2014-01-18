@@ -1,5 +1,4 @@
 function drawLineGraph(data) {
-    console.log(data);
     var priceSeries = [];
     for (var i = 0; i < data.length; i++) {
         var date = new Date(data[i][0]).getTime() / 1000;
